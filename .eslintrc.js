@@ -13,7 +13,7 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "prettier", 
+    "prettier",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -49,6 +49,7 @@ module.exports = {
       },
     ],
     "linebreak-style": ["error", "windows"],
+    "no-param-reassign": "off", //redux/toolskit用
   },
   settings: {
     "import/resolver": {
