@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import { useAppSelector } from "./redux/hooks";
 import Header from "./components/header/Header";
 import Menu from "./components/menu/Menu";
