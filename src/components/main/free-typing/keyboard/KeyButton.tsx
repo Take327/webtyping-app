@@ -11,63 +11,6 @@ type KeyObject = {
 };
 
 const KeyButton: React.FC<Props> = ({ keyObject }) => {
-  /*
-  const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-      paper: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        height: "40px",
-        width: "40px",
-        backgroundColor: "#FFF",
-      },
-      shift: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        height: "40px",
-        width: "80px",
-      },
-      tab: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        height: "40px",
-        width: "60px",
-      },
-      space: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        height: "40px",
-        width: "220px",
-      },
-      caps: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        height: "40px",
-        width: "70px",
-      },
-      ctrl: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        height: "40px",
-        width: "65px",
-      },
-      enter: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-        height: "90px",
-        width: "90px",
-      },
-    })
-  );
-  const classes = useStyles();
-  */
 
   const keyHandle = (obj: KeyObject) => {
     const code = obj.keyCode;
