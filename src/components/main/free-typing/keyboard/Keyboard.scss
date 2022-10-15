@@ -1,0 +1,61 @@
+.keyboard {
+  width: 50em;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  .key_line {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2.5px 0;
+  }
+
+  .enter_area {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .enter_lines {
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .key_default {
+    margin: 5px;
+    height: 40px;
+    padding: 16px;
+    background-color: #fff;
+    text-align: center;
+  }
+
+  .shift {
+    width: 80px;
+  }
+  .tab {
+    width: 80px;
+  }
+  .space {
+    width: 220px;
+  }
+  .caps {
+    width: 70px;
+  }
+  .ctrl {
+    width: 65px;
+  }
+  .enter {
+    height: 100px;
+    flex-grow: 1;
+  }
+
+  .auto {
+    flex-grow: 1;
+  }
+
+  .normal {
+    width: 40px;
+  }
+}

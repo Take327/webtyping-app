@@ -1,7 +1,8 @@
 import * as React from "react";
+import Keyboard from "./keyboard/Keyboard";
 
 const FreeTyping = () => (
-    <>FreeTyping</>
-  );
+  <Keyboard />
+);
 
 export default FreeTyping;
