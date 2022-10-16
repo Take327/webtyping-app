@@ -1,9 +1,9 @@
-import * as functions from "firebase-functions";
+const addDataset = require('./addDataset');
+const getDefaultTypingTexts = require('./getDefaultTypingTexts');
+const updateTextList = require('./updateTextList')
+const createUser = require('./loginUserFunction/createUser')
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", {structuredData: true});
-  response.send("Hello from Firebase!");
-});
+exports.addDataset = addDataset;
+exports.getDefaultTypingTexts = getDefaultTypingTexts;
+exports.updateTextList = updateTextList;
+exports.createUser = createUser;
