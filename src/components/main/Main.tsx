@@ -13,7 +13,7 @@ import Logout from "./logout/Logout";
 const Main = () => (
   <main>
     <Container maxWidth="lg">
-      <Box sx={{ height: "100vh" }}>
+      <Box sx={{ height: "100%" }}>
         <Routes>
           <Route path={PATH.HOME} element={<Home />} />
           <Route path={PATH.FREE_TYPING} element={<FreeTyping />} />

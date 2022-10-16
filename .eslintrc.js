@@ -26,6 +26,7 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "import"],
   rules: {
+    "@typescript-eslint/ban-ts-comment":"off",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/jsx-filename-extension": [

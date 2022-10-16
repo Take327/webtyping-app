@@ -1,0 +1,24 @@
+.text_view {
+  .main_text {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .kana_text {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .rome_text {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .typed_text {
+    color: #ffd0a6;
+  }
+  .remaining_text {
+    color: #636363;
+  }
+}
