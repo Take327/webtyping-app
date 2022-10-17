@@ -7,52 +7,61 @@ import Keyboard from "./keyboard/Keyboard";
 import TextArea from "./textview/TextView";
 
 import { TypingObject } from "../../../common/types";
+import useLocationChange from '../../../common/useLocationChange'
 
-const testText: TypingObject[] = [
-  {
-    id: 1,
-    originalText: "犬も歩けば棒に当たる",
-    kanaText: "イヌモアルケバボウニナタル",
-  },
-  {
-    id: 2,
-    originalText: "石の上にも三年",
-    kanaText: "イシノウエニモサンネン",
-  },
-];
+import processEnv from "../../../common/processEnv"
 
 const FreeTyping = () => {
   const [globalCount, setCount] = React.useState(0);
   const [originalText, setOriginalText] =
-    React.useState("スペースキーを押してください。");
+    React.useState("エンターキーを押してください。");
   const [kanaText, setKanaText] = React.useState("");
   const [typedText, setTypedText] = React.useState("");
   const [remainingText, setRemainingText] = React.useState("");
   const [typingTextArray, setTypingTextArray] =
-    React.useState<TypingObject[]>(testText);
+    React.useState<TypingObject[]>([]);
 
   const [challenges, setChallenges] = React.useState<any[]>([]);
 
   const [initialize, setInitialize] = React.useState<boolean>(false);
 
-  React.useEffect(() => {}, []);
+  useLocationChange((location) => {
+    console.log(location.pathname)
+  })
+
+  React.useEffect(() => {
+    console.log(processEnv.apiUrl.defaultTypingText)
+    const initAction = async () => {
+      try {
+        console.log(processEnv.apiUrl.defaultTypingText)
+        const request = await fetch(processEnv.apiUrl.defaultTypingText);
+        const json: { typingArray: TypingObject[] } =
+          (await request.json()) as unknown as {
+            typingArray: TypingObject[];
+          };
+        console.log(json.typingArray);
+
+        setTypingTextArray(json.typingArray);
+      } catch {
+      } finally {
+      }
+    };
+
+    initAction();
+  }, []);
 
   React.useEffect(() => {
     // キーダウン時のアクション
     document.onkeydown = (event) => {
       if (initialize) {
-        console.log(challenges);
-        console.log("initialize:" + initialize);
-        console.log("keydown");
         const targetId = `${event.keyCode}_button`;
         const target = document.getElementById(targetId);
         if (target) {
           target.style.backgroundColor = "#81d8d0";
         }
-        console.log("globalCount", globalCount);
         typingAction(event.key, globalCount);
       } else {
-        if (event.key === " ") {
+        if (event.key === "Enter") {
           startText(typingTextArray);
           setInitialize(true);
         }
@@ -71,21 +80,20 @@ const FreeTyping = () => {
 
   const typingAction = (key: string, count: number) => {
     // @ts-ignore
-    console.log("ここ１", count);
     if (challenges[count].input(key)) {
-      console.log("ここ２");
       setTypedText(challenges[count].typedRoman);
       setRemainingText(challenges[count].remainingRoman);
 
       // @ts-ignore
-      console.log("isclose", count);
       if (challenges[count].isCleared()) {
         if (count + 1 === challenges.length) {
-          alert("クリア");
+          //alert("クリア");
+          setOriginalText("クリア");
+          setKanaText("");
+          setTypedText("");
+          setRemainingText("");
         } else {
-          console.log("次のテキストに進む");
           const addCount = count + 1;
-          console.log("addCount", addCount);
 
           nextText(addCount);
           setCount(addCount);
@@ -123,7 +131,6 @@ const FreeTyping = () => {
   };
 
   const nextText = (count: number) => {
-    console.log("nextText");
     setOriginalText(typingTextArray[count].originalText);
     setKanaText(typingTextArray[count].kanaText);
     setTypedText(challenges[count].typedRoman);

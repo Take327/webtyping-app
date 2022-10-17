@@ -28,6 +28,10 @@
     ],
     "rewrites": [
       {
+        "source": "/defaultText",
+        "function": "defaultText" 
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
